@@ -25,7 +25,7 @@ Name it
 Select it
 
 ### Go to 
-```navigation menu /APIs and Services /Oauth Consent screen
+```navigation menu /APIs and Services /Oauth Consent screen```
 and click on get started
 
 ## How to deploy:
