@@ -9,3 +9,5 @@ db.db
 .vscode/
 .vscode/*
 .env
+.dev/
+.dev/*
