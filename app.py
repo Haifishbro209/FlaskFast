@@ -10,6 +10,14 @@ app = Flask(__name__)
 def landingpage():
     return render_template("landingpage.html")
 
+@app.route("/login")
+def login_page():
+    return render_template("login.html")
+
+@app.route("/register")
+def register_page():
+    return render_template("register.html")
+
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 8080))
