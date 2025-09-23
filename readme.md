@@ -1,4 +1,7 @@
 # Get started
+```bash
+git clone https://github.com/Haifishbro209/FlaskFast.git
+```
 
 ## 1) set up Virtual environment
 ```bash
@@ -13,7 +16,11 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## 2) set up Oauth
+## 2) set up Oauth2
+
+Open the [GCP](https://console.cloud.google.com/projectselector2)
+
+Create a new Project
 
 ## How to deploy:
 Change the last line of ```app.py``` to disamle debug mode
