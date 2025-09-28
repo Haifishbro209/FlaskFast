@@ -24,9 +24,10 @@ Open the [GCP](https://console.cloud.google.com/projectselector2)
 Name it
 Select it
 
-### Go to 
-```navigation menu /APIs and Services /Oauth Consent screen```
+### Go to  ```navigation menu /APIs and Services /Oauth Consent screen```
 and click on get started
+
+
 
 ## How to deploy:
 Change the last line of ```app.py``` to disamle debug mode
