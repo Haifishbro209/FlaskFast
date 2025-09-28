@@ -24,12 +24,16 @@ Open the [GCP](https://console.cloud.google.com/projectselector2)
 Name it
 Select it
 
-### Go to  ```navigation menu /APIs and Services /Oauth Consent screen```
+### Create Consent Screen
+```navigation menu /APIs and Services /Oauth Consent screen```
 and click on get started
 
+-external audience
+
+##### Link ToS and Privacy agreement as well as autorized domains in branding
 
 
-## How to deploy:
+# deploy:
 Change the last line of ```app.py``` to disamle debug mode
 ```python
     app.run(host="0.0.0.0", port=port, debug=False)
