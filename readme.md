@@ -38,10 +38,7 @@ Click on Clients
 + create new client
 + web application
  
-+ Authorised redirect URIs
-```
-http://localhost:8080/oauth2callback
-```
++ Authorised redirect URIs ``` http://localhost:8080/oauth2callback ```
 Create
 
 
