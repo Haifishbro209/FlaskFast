@@ -30,7 +30,19 @@ and click on get started
 
 -external audience
 
-##### Link ToS and Privacy agreement as well as autorized domains in branding
++ ##### Link ToS and Privacy agreement as well as autorized domains in branding
+
+### Create Client
+
+Click on Clients
++ create new client
++ web application
+ 
++ Authorised redirect URIs
+```
+http://localhost:8080/oauth2callback
+```
+Create
 
 
 # deploy:
