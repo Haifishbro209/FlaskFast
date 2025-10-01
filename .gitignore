@@ -13,9 +13,3 @@ __pycache__/
 # Google OAuth credentials
 client_secret*.json
 *client_secret*.json
-
-# Other sensitive files
-*.key
-*.pem
-*.p12
-*.pfx
