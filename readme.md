@@ -47,3 +47,5 @@ Change the last line of ```app.py``` to disamle debug mode
 ```python
     app.run(host="0.0.0.0", port=port, debug=False)
 ```
+
+##GitIgnore[.gitignore]
