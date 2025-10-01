@@ -41,6 +41,13 @@ Click on Clients
 + Authorised redirect URIs ``` http://localhost:8080/oauth2callback ```
 Create
 
++ ##### Download the ```client_secrets_*.json``` file
++ put it somwhere in the repositories folder (don't worry it's in the gitignore)
+
+## 2.2 start the ```.dev/init_project.py``` script
+
+## 3) set up DB
+
 
 # deploy:
 Change the last line of ```app.py``` to disamle debug mode
@@ -48,4 +55,8 @@ Change the last line of ```app.py``` to disamle debug mode
     app.run(host="0.0.0.0", port=port, debug=False)
 ```
 
-##GitIgnore[.gitignore]
+
+## example .env file (Not real tokens)
+GOOGLE_CLIENT_ID=710982345668-ojhvlsj8l9jn3djnehs2n4b098kn24bgnucbj.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=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
+DB_URL=postgresql://postgres.jnweernftitdblil:[YOUR-PASSWORD]@aws-0-eu-central-1.pooler.supabase.com:6543/postgres
