@@ -38,7 +38,11 @@ print(f'\n Click the {B}Connect{R} button in the nav aber on the top ')
 print(f'Copy the Transaction Pooler URL and paste it here' )
 db_url_nopwd = input()
 
+parts = db_url_nopwd.split('[YOUR-PASSWORD]')
+parts.append(parts[1])
+parts[1] = db_pwd
+DB_URL = ''.join(parts)
 
-
-
-db = 'postgresql://postgres.kkndrmnrttbkghndblkl:[YOUR-PASSWORD]@aws-0-eu-central-1.pooler.supabase.com:6543/postgres'
+with open('.env', 'a') as e:
+    e.write(f'\nDB_URL={DB_URL}')
+print(f'{Y} The DB URL was successfully merged and saved in the .env{R}')
