@@ -44,14 +44,23 @@ Create
 + ##### Download the ```client_secrets_*.json``` file
 + put it somwhere in the repositories folder (don't worry it's in the gitignore)
 
-## 2.2 start the ```.dev/init_project.py``` script
+### 2.2 start the ```.dev/init.py``` script
+```bash
+python3 .dev/init.py
+```
 
 ## 3) set up DB
 
++ go to [Supabase](https://supabase.com/dashboard/org/)
++ Create new Project
+###### + Location == Central EU (Frankfurt) 'eu-central-1'
++ enter the password in the init script
+
 
 # deploy:
-Change the last line of ```app.py``` to disamle debug mode
+Change the last line of ```app.py``` to disable debug mode
 ```python
+    port = int(os.environ.get('PORT', 8080))
     app.run(host="0.0.0.0", port=port, debug=False)
 ```
 

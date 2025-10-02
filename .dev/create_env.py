@@ -31,5 +31,5 @@ def extract_oauth_creds_to_dotenv():
     with open('.env', 'a') as e:
         e.write(f'GOOGLE_CLIENT_ID={id}\n')
         e.write(f'GOOGLE_CLIENT_SECRET={secret}\n')
-        print('Success your google credentials are now in the .env file')
+        print('Success! your google credentials are now in the .env file')
 
