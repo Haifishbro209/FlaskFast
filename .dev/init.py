@@ -1,5 +1,6 @@
 import sys
 import os
+import urllib.parse
 sys.path.insert(0, os.path.dirname(__file__))
 
 from create_env import extract_oauth_creds_to_dotenv
@@ -21,6 +22,7 @@ extract_oauth_creds_to_dotenv()
 print('')
 
 print(f'{Y}2) set up the DB{R}')
+
 print('go to https://supabase.com/dashboard/org/')
 print('Create new Project, Location == Central EU (Frankfurt) "eu-central-1"')
 correct_pwd = 'n'
@@ -30,4 +32,13 @@ while correct_pwd != 'y':
     print(f'Is {B}{db_pwd}{R} the correct password? {B}(y/n){R}?')
     correct_pwd = get_key()
 
+db_pwd = urllib.parse.quote(db_pwd)
 
+print(f'\n Click the {B}Connect{R} button in the nav aber on the top ')
+print(f'Copy the Transaction Pooler URL and paste it here' )
+db_url_nopwd = input()
+
+
+
+
+db = 'postgresql://postgres.kkndrmnrttbkghndblkl:[YOUR-PASSWORD]@aws-0-eu-central-1.pooler.supabase.com:6543/postgres'

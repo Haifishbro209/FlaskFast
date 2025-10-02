@@ -53,8 +53,11 @@ python3 .dev/init.py
 
 + go to [Supabase](https://supabase.com/dashboard/org/)
 + Create new Project
-###### + Location == Central EU (Frankfurt) 'eu-central-1'
+##### + Location == Central EU (Frankfurt) 'eu-central-1'
 + enter the password in the init script
+
++ click on ```Connect``` in the nav bar
++ Copy the link for transaction pooler and paste it in the script
 
 
 # deploy:
