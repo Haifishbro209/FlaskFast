@@ -8,6 +8,7 @@ from src.models import *
 import src.encoder as encoder
 from src.argon2_encrypter import encode
 
+print(os.getcwd())
 
 load_dotenv() 
 DB_URL = os.getenv("DB_URL")
@@ -62,9 +63,8 @@ def new_user(user_data):
 def save_cookie(user_id, token,expiry,ip,user_agent):
     session = Session()
     try:
-       token_hash = encode(token)
        new_cookie = Session_Cookie(
-           token = token_hash,
+           token = token,
            user_id = user_id,
            expiry = expiry,
            ip_address = ip,
