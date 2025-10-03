@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
-from sqlalchemy.ext.declarative import declarative_base, relationship
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import relationship
 from sqlalchemy import *
 
 Base = declarative_base()
