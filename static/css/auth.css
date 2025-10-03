@@ -73,6 +73,7 @@ body {
   background: var(--bg-primary);
   color: var(--text-primary);
   min-height: 44px;
+  text-decoration: none;
 }
 
 .btn-google:hover {
