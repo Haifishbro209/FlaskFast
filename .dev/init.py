@@ -35,7 +35,7 @@ while correct_pwd != 'y':
 db_pwd = urllib.parse.quote(db_pwd)
 
 print(f'\n Click the {B}Connect{R} button in the nav aber on the top ')
-print(f'Copy the Transaction Pooler URL and paste it here' )
+print(f'Copy the {B}Transaction Pooler{R} URL and paste it here' )
 db_url_nopwd = input()
 
 parts = db_url_nopwd.split('[YOUR-PASSWORD]')

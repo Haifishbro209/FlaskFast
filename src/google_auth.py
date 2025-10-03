@@ -18,8 +18,18 @@ SCOPES = [
 ]
 
 def init_oauth_flow():
-    flow = Flow.from_client_secrets_file(
-        'client_secret.json',
+    client_config = {
+        "web": {
+            "client_id": CLIENT_ID,
+            "client_secret": CLIENT_SECRET,
+            "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+            "token_uri": "https://oauth2.googleapis.com/token",
+            "redirect_uris": [REDIRECT_URI]
+        }
+    }
+    
+    flow = Flow.from_client_config(
+        client_config,
         scopes=SCOPES
     )
     flow.redirect_uri = REDIRECT_URI
@@ -32,8 +42,18 @@ def init_oauth_flow():
     return authorization_url
 
 def handle_oauth_callback(code):
-    flow = Flow.from_client_secrets_file(
-        'client_secret.json',
+    client_config = {
+        "web": {
+            "client_id": CLIENT_ID,
+            "client_secret": CLIENT_SECRET,
+            "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+            "token_uri": "https://oauth2.googleapis.com/token",
+            "redirect_uris": [REDIRECT_URI]
+        }
+    }
+    
+    flow = Flow.from_client_config(
+        client_config,
         scopes=SCOPES
     )
     flow.redirect_uri = REDIRECT_URI
