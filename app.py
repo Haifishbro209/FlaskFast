@@ -1,9 +1,14 @@
 import os
 from flask import *
 from dotenv import load_dotenv
+
+from src.database import *
 import src.google_auth as google_auth
+from src.random_string_gen import generate_token
 
 load_dotenv()
+
+SESSION_LENGTH = int(os.environ.get('SESSION_LENGTH') or 7)
 
 app = Flask(__name__)
 
@@ -30,6 +35,33 @@ def register_api():
 def login_api():
     authorization_url = google_auth.init_oauth_flow()
     return redirect(authorization_url)
+
+@app.route("/oauth2callback")
+def callback():
+    code = request.args.get('code')
+    if code:
+        try:
+            credentials = google_auth.handle_oauth_callback(code)
+            user_info = google_auth.get_user_info(credentials)
+            
+            user_id = new_user(user_info)
+
+            ip = request.remote_addr
+            token = generate_token()
+            expiry = datetime.utcnow() + timedelta(days= SESSION_LENGTH)
+            user_agent = request.headers.get('User-Agent')
+
+
+            response = make_response('Login successfull')
+            response.set_cookie("token",token, expires= expiry)
+            save_cookie(user_id,token,expiry,ip,user_agent)
+
+            return response
+        except Exception as e:
+            return f"Error during authentication: {str(e)}", 400
+    else:
+        return "Authorization failed", 400
+
 
 
 if __name__ == "__main__":

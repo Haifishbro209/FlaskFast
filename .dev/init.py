@@ -46,3 +46,16 @@ DB_URL = ''.join(parts)
 with open('.env', 'a') as e:
     e.write(f'\nDB_URL={DB_URL}')
 print(f'{Y} The DB URL was successfully merged and saved in the .env{R}')
+
+print(f"{Y}\n How long should the session cookies be valid until a new login is needed?{B}\n default is 60 days{R}")
+expiry = input()
+try:
+    expiry = int(expiry)
+
+except ValueError as e:
+    expiry = 60
+
+with open('.env', 'a') as e:
+    e.write(f'\nSESSION_LENGTH={expiry}')
+
+print(f"\n {B} SESSION_LENGTH {R} set to {B}{expiry}{R}  in the .env")

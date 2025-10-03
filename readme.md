@@ -72,7 +72,4 @@ Change the last line of ```app.py``` to disable debug mode
 GOOGLE_CLIENT_ID=710982345668-ojhvlsj8l9jn3djnehs2n4b098kn24bgnucbj.apps.googleusercontent.com
 GOOGLE_CLIENT_SECRET=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
 DB_URL=postgresql://postgres.jnweernftitdblil:[YOUR-PASSWORD]@aws-0-eu-central-1.pooler.supabase.com:6543/postgres
-
-
-### To Do:
-make paths without user_id_hash for more simplicity
+SESSION_LENGTH=60
