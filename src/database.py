@@ -93,28 +93,17 @@ def get_user_id(hash):
     finally:
         session.close()
 
-def verify_token(token, user_id):
-    """Verify if token is valid for the given user"""
-    from argon2_encrypter import check_pwd
-    from datetime import datetime
-    
+def token_to_user_id(token):
     session = Session()
     try:
-        # Get all active sessions for this user
-        active_sessions = session.query(Session_Cookie).filter(
-            Session_Cookie.user_id == user_id,
-            Session_Cookie.expiry > datetime.utcnow()
-        ).all()
-        
-        # Check if any session matches the provided token
-        for session_cookie in active_sessions:
-            if check_pwd(token, session_cookie.token):
-                return True
-        return False
+        user = session.query(User).filter(User.encoded_id == hash).first()
+        if user:
+            return user.id
+        return None
     except Exception as e:
         session.rollback()
-        print(f"Error verifying token: {e}")
-        return False
+        print(f"Error getting user ID: {e}")
+        return None
     finally:
         session.close()
 

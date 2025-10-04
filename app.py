@@ -12,6 +12,11 @@ SESSION_LENGTH = int(os.environ.get('SESSION_LENGTH') or 7)
 
 app = Flask(__name__)
 
+def get_current_user_id():
+    token = request.cookies.get("token")
+    token_to_user_id(token)
+
+
 @app.route("/")
 def landingpage():
     return render_template("landingpage.html")
@@ -23,6 +28,11 @@ def login_page():
 @app.route("/register")
 def register_page():
     return render_template("register.html")
+
+@app.route("/home")
+def home():
+
+    return render_template("home.html", profile_picture = profile_picture)
 
 # APIs
 
@@ -53,7 +63,7 @@ def callback():
 
 
             response = make_response('Login successfull')
-            response.set_cookie("token",token, expires= expiry)
+            response.set_cookie("token",token, expires= expiry )#, secure=True
             save_cookie(user_id,token,expiry,ip,user_agent)
 
             return response
