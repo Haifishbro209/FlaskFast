@@ -12,9 +12,9 @@ SESSION_LENGTH = int(os.environ.get('SESSION_LENGTH') or 7)
 
 app = Flask(__name__)
 
-def get_current_user_id():
+def get_current_user():
     token = request.cookies.get("token")
-    token_to_user_id(token)
+    return token_to_user(token)
 
 
 @app.route("/")
@@ -31,7 +31,8 @@ def register_page():
 
 @app.route("/home")
 def home():
-
+    user = get_current_user()
+    profile_picture = user.profile_picture
     return render_template("home.html", profile_picture = profile_picture)
 
 # APIs

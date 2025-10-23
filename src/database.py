@@ -93,13 +93,13 @@ def get_user_id(hash):
     finally:
         session.close()
 
-def token_to_user_id(token):
+def token_to_user(token):
     session = Session()
     try:
-        user = session.query(User).filter(User.encoded_id == hash).first()
-        if user:
-            return user.id
-        return None
+        cookie = session.query(Session_Cookie).filter(Session_Cookie.user_id == token).first()
+        user_id = cookie.user_id  
+        user = session.query(User).filter(User.id == user_id).first()
+        return user     
     except Exception as e:
         session.rollback()
         print(f"Error getting user ID: {e}")
