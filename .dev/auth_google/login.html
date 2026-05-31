@@ -16,7 +16,9 @@
         {% endfor %}
     {% endwith %}
 
-    <!-- AUTH_FORM_PLACEHOLDER: replaced by init.py -->
+    <a href="{{ url_for('login_api') }}">
+        <button type="button">Sign in with Google</button>
+    </a>
 
     <p>Don't have an account? <a href="{{ url_for('register_page') }}">Sign up</a></p>
 

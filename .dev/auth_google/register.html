@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log In</title>
+    <title>Sign Up</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
 </head>
 <body>
 
-    <h1>Log In</h1>
+    <h1>Create Account</h1>
 
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% for category, message in messages %}
@@ -16,9 +16,11 @@
         {% endfor %}
     {% endwith %}
 
-    <!-- AUTH_FORM_PLACEHOLDER: replaced by init.py -->
+    <a href="{{ url_for('register_api') }}">
+        <button type="button">Sign up with Google</button>
+    </a>
 
-    <p>Don't have an account? <a href="{{ url_for('register_page') }}">Sign up</a></p>
+    <p>Already have an account? <a href="{{ url_for('login_page') }}">Log in</a></p>
 
 </body>
 </html>

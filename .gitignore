@@ -1,15 +1,10 @@
-./.vscode
-.vscode/*
-.venv
+.env
+.venv/
+venv/
+__pycache__/
 *.pyc
 *.db
-__pycache__/
-/__pycache__/
-.vscode/
-/.vscode/
-.env
-/.secrets
-
-# Google OAuth credentials
 client_secret*.json
 *client_secret*.json
+flask_session/
+.vscode/

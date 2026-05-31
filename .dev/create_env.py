@@ -1,35 +1,48 @@
-import glob, json, os
+"""
+create_env.py
+-------------
+Finds a client_secret*.json in the repository and extracts
+GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET into the .env file.
+"""
 
-def extract_oauth_creds_to_dotenv():
-
-    files = glob.glob('**/client_secret*.json', recursive=True)
-    hidden_files = glob.glob('.*/**/client_secret*.json', recursive=True)
-    all_files = files + hidden_files
+import glob
+import json
+import os
 
 
+def extract_google_creds(env_path: str = "../.env") -> None:
+    """Scan for client_secret*.json and append Google credentials to .env."""
+    patterns = [
+        "**/*client_secret*.json",
+        ".*/**/*client_secret*.json",
+    ]
+    files: list[str] = []
+    for p in patterns:
+        files.extend(glob.glob(p, recursive=True))
+    files = list(set(files))
 
-    if len(all_files) ==0:
-        print(f'No client secrets files found in {os.getcwd()} and all subdirectories')
-        os.exit()
+    if not files:
+        print(f"No client_secret*.json found under {os.getcwd()}")
+        raise FileNotFoundError("client_secret*.json not found")
 
-    if len(all_files) > 1:
-        for f in range(len(all_files)):
-            print(f'{f + 1}. {all_files[f]}')
-        print('Multiple files were found which one is the right one?')
-        index = int(input())
-        index -=1
-        secrets = [index]
+    if len(files) > 1:
+        print("Multiple client_secret files found:")
+        for i, f in enumerate(files, 1):
+            print(f"  {i}. {f}")
+        idx = int(input("Which one should be used? ")) - 1
+        chosen = files[idx]
     else:
-        secrets = all_files[0]
-        print(f'{all_files[0]} found!')
+        chosen = files[0]
+        print(f"Found: {chosen}")
 
-    with open(secrets, 'r') as f:
-        client_secrets_file = json.load(f)['web']
-        id = client_secrets_file['client_id']
-        secret = client_secrets_file['client_secret']
+    with open(chosen) as fh:
+        data = json.load(fh)["web"]
 
-    with open('.env', 'a') as e:
-        e.write(f'GOOGLE_CLIENT_ID={id}\n')
-        e.write(f'GOOGLE_CLIENT_SECRET={secret}\n')
-        print('Success! your google credentials are now in the .env file')
+    _append_env(env_path, f'GOOGLE_CLIENT_ID={data["client_id"]}')
+    _append_env(env_path, f'GOOGLE_CLIENT_SECRET={data["client_secret"]}')
+    print("Google credentials written to .env")
 
+
+def _append_env(path: str, line: str) -> None:
+    with open(path, "a") as fh:
+        fh.write(line + "\n")

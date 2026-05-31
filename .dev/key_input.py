@@ -1,22 +1,22 @@
-import sys
 import os
+import sys
 
-def get_key():
+
+def get_key() -> str:
+    """Wait for a single keypress and return it as a string.
+    Works on Windows, Linux and macOS.
     """
-    Wartet auf einen Tastendruck und gibt die Taste zurück.
-    Funktioniert auf Windows, Linux und Mac.
-    """
-    if os.name == 'nt':  # Windows
+    if os.name == "nt":          # Windows
         import msvcrt
-        return msvcrt.getch().decode('utf-8', errors='ignore')
-    else:  # Linux/Mac
+        return msvcrt.getch().decode("utf-8", errors="ignore")
+    else:                         # Linux / macOS
         import tty
         import termios
         fd = sys.stdin.fileno()
-        old_settings = termios.tcgetattr(fd)
+        old = termios.tcgetattr(fd)
         try:
             tty.setraw(fd)
-            taste = sys.stdin.read(1)
+            ch = sys.stdin.read(1)
         finally:
-            termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
-        return taste
+            termios.tcsetattr(fd, termios.TCSADRAIN, old)
+        return ch
